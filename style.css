@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Inter:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;600;700&display=swap');
+
+:root {
+    --accent-color: #FF5722;
+    --accent-border-color: #FF8A50;
+    --primary-font-color: #333333;
+    --secondary-font-color: #F5F5F5;
+    --placeholder-font-color: #C2C2C2;
+    --button-primary-color: #03A9F4;
+  }
+  
