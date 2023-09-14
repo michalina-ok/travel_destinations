@@ -3,10 +3,28 @@
 :root {
     --accent-color: #FF5722;
     --accent-border-color: #FF8A50;
-    --primary-font-color: #333333;
-    --secondary-font-color: #F5F5F5;
+    --dark-font-color: #333333;
+    --light-font-color: #F5F5F5;
     --placeholder-font-color: #C2C2C2;
-    --button-primary-color: #03A9F4;
+    --button-primary-bkg-color: #03A9F4;
     --primary-font-style: 'Inter', sans-serif;
+  }
+
+  body {
+      font-family: var(--primary-font-style);
+      color: var(--dark-font-color);
+  }
+
+  .primary-button {
+      background-color: var(--button-primary-bkg-color);
+      color: var(--light-font-color);
+font-weight: 500;
+padding: 12px 32px;
+border-radius: 5px;
+border: none;
+  }
+
+  .secondary-button {
+
   }
   
