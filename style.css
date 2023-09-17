@@ -6,12 +6,12 @@
   --dark-font-color: #333333;
   --light-font-color: #f5f5f5;
   --placeholder-font-color: #c2c2c2;
-  --button-primary-bkg-color: #03a9f4;
+  --button-blue: #03a9f4;
   --primary-font-style: "Inter", sans-serif;
 }
 
 body {
-  margin: 0;
+  margin: 0 0 40px 0;
   font-family: var(--primary-font-style);
   color: var(--dark-font-color);
   background: #F5F5F5;
@@ -29,15 +29,32 @@ a {
 }
 
 .primary-button {
-  background-color: var(--button-primary-bkg-color);
+  font-size: 20px;
+  display: flex;
+padding: 12px 32px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 5px;
+  background-color: var(--button-blue);
   color: var(--light-font-color);
   font-weight: 500;
-  padding: 12px 32px;
-  border-radius: 5px;
   border: none;
+  letter-spacing: -1.5px;
 }
 
 .secondary-button {
+  font-size: 20px;
+display: flex;
+padding: 12px 32px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 5px;
+border: 2px solid var(--button-blue);
+background: #F5F5F5;
+color: var(--button-blue);
+letter-spacing: -1.5px;
 }
 
 header {
@@ -66,6 +83,7 @@ h2 {
 
 .destinations-container {
 width: 60%;
+margin-bottom: 40px;
 }
 
 .destination-card {
@@ -106,6 +124,29 @@ font-weight: 700;
 
 .description {
   line-height: 150%;
+}
+
+input, textarea {
+  border-radius: 5px;
+border-top: 1px solid #FF8A50;
+border-left: 1px solid #FF8A50;
+background: #FFF;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+padding: 10px;
+}
+
+.input-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.required {
+  color: var(--accent-color);
 }
 
 
