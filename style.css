@@ -1,30 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Inter:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Inter:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;600;700&display=swap");
 
 :root {
-    --accent-color: #FF5722;
-    --accent-border-color: #FF8A50;
-    --dark-font-color: #333333;
-    --light-font-color: #F5F5F5;
-    --placeholder-font-color: #C2C2C2;
-    --button-primary-bkg-color: #03A9F4;
-    --primary-font-style: 'Inter', sans-serif;
-  }
+  --accent-color: #ff5722;
+  --accent-border-color: #ff8a50;
+  --dark-font-color: #333333;
+  --light-font-color: #f5f5f5;
+  --placeholder-font-color: #c2c2c2;
+  --button-primary-bkg-color: #03a9f4;
+  --primary-font-style: "Inter", sans-serif;
+}
 
-  body {
-      font-family: var(--primary-font-style);
-      color: var(--dark-font-color);
-  }
+body {
+  margin: 0;
+  font-family: var(--primary-font-style);
+  color: var(--dark-font-color);
+  background: #F5F5F5;
+}
 
-  .primary-button {
-      background-color: var(--button-primary-bkg-color);
-      color: var(--light-font-color);
-font-weight: 500;
-padding: 12px 32px;
-border-radius: 5px;
-border: none;
-  }
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .secondary-button {
+a {
+    text-decoration: none;
+}
 
-  }
-  
+.primary-button {
+  background-color: var(--button-primary-bkg-color);
+  color: var(--light-font-color);
+  font-weight: 500;
+  padding: 12px 32px;
+  border-radius: 5px;
+  border: none;
+}
+
+.secondary-button {
+}
+
+header {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  background-color: var(--accent-color);
+  padding-left: 12px;
+}
+
+header a {
+    color: var(--light-font-color);
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 500;
+  border-bottom: var(--accent-border-color) 1px solid;
+  line-height: 150%; /* 54px */
+}
+
+.destinations-container {
+width: 60%;
+}
+
+.destination-card {
+    display: flex;
+    gap: 19px;
+    padding: 40px 0;
+    border-bottom: var(--accent-border-color) 1px solid;
+}
+
+.google-maps {
+  color: #918E9B;
+  text-decoration: underline;
+}
+
+.location div {
+  display: flex;
+  gap: 12px;
+}
+
+.place {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.country {
+  text-transform: uppercase;
+  letter-spacing: 1.741px;
+}
+
+.stay-dates {
+  font-weight: 700;
+}
+
+.place {
+  font-size: 25px;
+font-weight: 700;
+}
+
+.description {
+  line-height: 150%;
+}
+
+
