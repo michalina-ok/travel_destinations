@@ -1,0 +1,16 @@
+{
+  "name": "travel_destinations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "travel_destinations.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "mongodb": "6.0"
+  }
+}
