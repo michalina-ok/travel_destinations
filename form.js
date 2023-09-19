@@ -1,4 +1,5 @@
 const form = document.getElementById('new-destination');
+const apiEndPoint = "http://127.0.0.1:4000/destinations";
 const file = document.getElementById('file').value;
 let destinationArray = [];
 
@@ -45,6 +46,9 @@ form.addEventListener('submit', async (event) => {
         image: base64,
         description,
       };
+      
+      // send the POST request
+      await insertData(destinationData); 
 
     return destinationData;
   }
@@ -57,6 +61,27 @@ form.addEventListener('submit', async (event) => {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
+  }
+
+  async function insertData(destinationData) {
+    try {
+      const response = await fetch(apiEndPoint, {
+        method: "POST",
+        body: JSON.stringify(destinationData),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data); // Handle the response from the server if needed
+      } else {
+        console.error("Error sending data to the server.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
 

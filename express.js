@@ -4,8 +4,12 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express()
 const port = 4000
 
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({extended: true}))
+/* app.use(express.urlencoded({limit: '50mb'})); */
+
+/* app.use(express.json());
+app.use(express.urlencoded({extended: true})) */
 
 
 let uri = 'mongodb://127.0.0.1:27017/'
