@@ -1,11 +1,12 @@
 const form = document.getElementById('new-destination');
+const file = document.getElementById('file').value;
 let destinationArray = [];
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault(); 
   
     // collect the input values and create an object
-    const destinationData = collectDestinationData();
+    const destinationData = await collectDestinationData();
   
     // For example, you can send it to your API endpoint via AJAX
     destinationArray.push(destinationData);
@@ -17,26 +18,46 @@ form.addEventListener('submit', (event) => {
     console.log(destinationData);
   });
 
-  function collectDestinationData() {
-    // Get values from the form inputs
-    const country = document.getElementById('country').value;
-    const title = document.getElementById('title').value;
-    const link = document.getElementById('link').value;
-    const arrivalDate = document.getElementById('arrivalDate').value;
-    const departureDate = document.getElementById('departureDate').value;
-    const file = document.getElementById('file').value;
-    const description = document.getElementById('description').value;
+ async function collectDestinationData() {
+     // Get values from the form inputs
+ const country = document.getElementById('country').value;
+ const title = document.getElementById('title').value;
+ const link = document.getElementById('link').value;
+ const arrivalDate = document.getElementById('arrivalDate').value;
+ const departureDate = document.getElementById('departureDate').value;
+ const imageInput = document.querySelector("#file");
+ const description = document.getElementById('description').value;
+
   
+ //convert image to base64
+ const imageFile = imageInput.files[0];
+ const base64 = await imageToBase64(imageFile);
+
+  
+
     // Create an object with the collected data
     const destinationData = {
-      country,
-      title,
-      link,
-      arrivalDate,
-      departureDate,
-      file,
-      description,
-    };
-  
+        country,
+        title,
+        link,
+        arrivalDate,
+        departureDate,
+        image: base64,
+        description,
+      };
+
     return destinationData;
   }
+
+
+  async function imageToBase64(file) {
+     return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+
+
+
