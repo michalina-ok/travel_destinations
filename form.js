@@ -1,8 +1,10 @@
-const form = document.getElementById('new-destination');
 const apiEndPoint = "http://127.0.0.1:4000/destination";
 const file = document.getElementById('file').value;
-let destinationArray = [];
 
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById('new-destination');
+    let destinationArray = [];
+    
 form.addEventListener('submit', sendForm);
 
 async function sendForm(event) {
@@ -63,7 +65,7 @@ const description = document.getElementById('description').value;
     });
   }
 
-   function insertData(destinationData) {
+   async function insertData(destinationData) {
     try {
       const response =  fetch(apiEndPoint, {
         method: "POST",
@@ -81,7 +83,7 @@ const description = document.getElementById('description').value;
       });
   
       if (response.ok) {
-        const data =  response.json();
+        const data =  await response.json();
         console.log(data); // Handle the response from the server if needed
       } else {
         console.error("Error sending data to the server.");
@@ -89,9 +91,12 @@ const description = document.getElementById('description').value;
     } catch (error) {
       console.error("Error:", error);
     }
-  } 
+  }});
   
 
+
+
+    //display the data on the page
 
 
 

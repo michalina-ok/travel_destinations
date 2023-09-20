@@ -55,15 +55,6 @@ app.post('/destination',  async (req, res) => {
          }
      await destCollection.insertOne(doc);
    
-
-    /*  destCollection.insertOne({
-        country: req.body.country,
-        title: req.body.title,
-        arrival_date: req.body.arrival_date,
-        departure_date: req.body.departure_date,
-        image: req.body.image,
-        description: req.body.description
-    }); */
     res.status(201).send("Destination added");
   })
 
