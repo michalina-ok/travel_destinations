@@ -1,50 +1,33 @@
 const form = document.getElementById('new-destination');
-const apiEndPoint = "http://127.0.0.1:4000/destinations";
+const apiEndPoint = "http://127.0.0.1:4000/destination";
 const file = document.getElementById('file').value;
 let destinationArray = [];
 
+form.addEventListener('submit', sendForm);
 
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-let uri = 'mongodb://localhost:27017'
-
-const client = new MongoClient(uri,  {
-  serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-  }
-}
-);
-
-
-form.addEventListener('submit', async (event) => {
+async function sendForm(event) {
+    console.log('sendForm called');
     event.preventDefault(); 
-  
+    
     // collect the input values and create an object
-    const destinationData = await collectDestinationData();
-  
+    await collectDestinationData();
 
-    destinationArray.push(destinationData);
-  
+
+
     // Reset the form (optional)
-   /*  form.reset(); */
-  
-    // You can log or work with the destinationData object here
-    console.log(destinationData);
-  });
+    /*  form.reset(); */
+}
+
 
  async function collectDestinationData() {
      // Get values from the form inputs
  const country = document.getElementById('country').value;
  const title = document.getElementById('title').value;
- const link = document.getElementById('link').value;
- const arrivalDate = document.getElementById('arrivalDate').value;
- const departureDate = document.getElementById('departureDate').value;
- const imageInput = document.querySelector("#file");
- const description = document.getElementById('description').value;
-
-  
+ /* const link = document.getElementById('link').value; */
+ const arrivalDate = document.getElementById('arrivalDate').value
+const departureDate = document.getElementById('departureDate').value
+const imageInput = document.getElementById('file');
+const description = document.getElementById('description').value;
  //convert image to base64
  const imageFile = imageInput.files[0];
  const base64 = await imageToBase64(imageFile);
@@ -53,17 +36,18 @@ form.addEventListener('submit', async (event) => {
 
     // Create an object with the collected data
     const destinationData = {
-        country,
-        title,
-        link,
-        arrivalDate,
-        departureDate,
+        country: country,
+        title: title,
+        arrivalDate: arrivalDate,
+        departureDate: departureDate,
         image: base64,
-        description,
+        description: description
       };
-      
+
+    destinationArray.push(destinationData);
+
+    
       // send the POST request
-    console.log(destinationData,"destinationData inc collectDestinationData");
       await insertData(destinationData); 
 
     return destinationData;
@@ -79,18 +63,25 @@ form.addEventListener('submit', async (event) => {
     });
   }
 
-  async function insertData(destinationData) {
+   function insertData(destinationData) {
     try {
-      const response = await fetch(apiEndPoint, {
+      const response =  fetch(apiEndPoint, {
         method: "POST",
-        body: JSON.stringify(destinationData),
+        body: JSON.stringify({
+            country: destinationData.country,
+            title: destinationData.title,
+            arrival_date: destinationData.arrivalDate,
+            departure_date: destinationData.departureDate,
+            image: destinationData.image,
+            description: destinationData.description
+        }),
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded", // Correct Content-Type header
+          "Content-Type": "application/json",
         },
       });
   
       if (response.ok) {
-        const data = await response.json();
+        const data =  response.json();
         console.log(data); // Handle the response from the server if needed
       } else {
         console.error("Error sending data to the server.");
@@ -98,35 +89,10 @@ form.addEventListener('submit', async (event) => {
     } catch (error) {
       console.error("Error:", error);
     }
-  }
-
-  
-  
-  
-  
-  
+  } 
   
 
-/*   async function insertData(destinationData) {
-    console.log(destinationData,"destinationData inc insertData");
 
-    const myDB = client.db("travel_destinations_ola");
-    const myColl = myDB.collection("destinations");
-    
-    const doc = { 
-      country: destinationData.country,
-      title: destinationData.title,
-      arrivalDate: destinationData.arrivalDate,
-      departureDate: destinationData.departureDate,
-      image: destinationData.image,
-      description: destinationData.description
-    };
-    const result = await myColl.insertOne(doc);
-  console.log(
-  `A document was inserted with the _id: ${result.insertedId}`,
-  );
-  return result.insertedId;
-  } */
 
 
 

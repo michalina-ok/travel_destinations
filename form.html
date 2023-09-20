@@ -12,17 +12,17 @@
             <img src="/assets/globe_icon.svg" alt="globe icon">
             <h1><a href="index.html">My travel journal.</a></h1></header>
         <h2>New destination</h2>
-        <form id="new-destination"  action="http://127.0.0.1:4000/destinations" method="POST" enctype="multipart/form-data">
+        <form id="new-destination"  action="http://127.0.0.1:4000/destination" method="POST">
             <div class="input-container">
                 <div class="input-flex">
                     <label for="country">Country <span class="required">*</span></label>
-                    <input type="text" id="country" name="country" required><br><br>
+                    <input type="text" id="country" name="country" required autofocus><br><br>
                 </div>
             </div>
             <div class="input-container">
                 <div class="input-flex">
                     <label for="title">Title <span class="required">*</span></label>
-                    <input type="text" id="title" name="title" required ><br><br>
+                    <input type="text" id="title" name="title" required autofocus ><br><br>
                 </div>
             </div>
 
@@ -69,9 +69,6 @@
         </form>
 
     </main>
-    <script src="script.js"></script>
-    <script src="travel_destinations.js"></script>
     <script src="form.js"></script>
-    <script src="express.js"></script>
 </body>
 </html>

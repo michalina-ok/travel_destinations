@@ -44,7 +44,9 @@ server.listen(port, hostname, () => {
 });
 
 
-async function insert(country, title, arrival_date, departure_date, image, description) {
+
+
+/* async function insert(country, title, arrival_date, departure_date, image, description) {
 
     const myDB = client.db("travel_destinations_ola");
     const myColl = myDB.collection("destinations");
@@ -58,13 +60,11 @@ async function insert(country, title, arrival_date, departure_date, image, descr
       description: description
     };
     const result = await myColl.insertOne(doc);
-/*   console.log(
-  `A document was inserted with the _id: ${result.insertedId}`,
-  ); */
-      return result.insertedId;
-  }
 
-  async function run(data) {
+      return result.insertedId;
+  } */
+
+/*   async function run(data) {
     try {
       // Connect the client to the server (optional starting in v4.7)
       await client.connect();
@@ -83,7 +83,7 @@ async function insert(country, title, arrival_date, departure_date, image, descr
       // Ensures that the client will close when you finish/error
       await client.close();
     }
-  }
+  } */
 
   run().catch(console.dir);
 

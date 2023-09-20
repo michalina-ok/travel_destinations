@@ -1,21 +1,17 @@
 const express = require('express')
-const { MongoClient, ServerApiVersion } = require("mongodb");
-
 const app = express()
 const port = 4000
-
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({extended: true}))
-/* app.use(express.json()); */
-/* app.use(express.urlencoded({limit: '50mb'})); */
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const cors = require('cors');
 
 
 
+let connectionString = 'mongodb://127.0.0.1:27017/'
 
-let uri = 'mongodb://127.0.0.1:27017/'
+
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri,  {
+const client = new MongoClient(connectionString,  {
   serverApi: {
       version: ServerApiVersion.v1,
       strict: true,
@@ -26,6 +22,11 @@ const client = new MongoClient(uri,  {
 
 const db = client.db("travel_destinations_ola");
 const destCollection = db.collection("destinations");
+
+app.use(express.json({limit: '25mb'}));
+app.use(express.urlencoded({extended: true}))
+app.use(cors());
+
 
 
 //Listen for GET requests
@@ -41,25 +42,34 @@ app.get('/destinations/', async (req, res) => {
     })
 
 //Listen for POST requests
-app.post('/destinations/', async (req, res) => {
-    const newDestination = req.body;
-    const result = await destCollection.insertOne(newDestination);
-    console.log(req.body);
-    res.status(201).json(result.ops);
+app.post('/destination',  async (req, res) => {
+
+
+        const doc = {
+           title: req.body.title,
+           country: req.body.country,
+            arrival_date: req.body.arrival_date,
+            departure_date: req.body.departure_date,
+            image: req.body.image,
+            description: req.body.description
+         }
+     await destCollection.insertOne(doc);
+   
+
+    /*  destCollection.insertOne({
+        country: req.body.country,
+        title: req.body.title,
+        arrival_date: req.body.arrival_date,
+        departure_date: req.body.departure_date,
+        image: req.body.image,
+        description: req.body.description
+    }); */
+    res.status(201).send("Destination added");
   })
 
-//Listen for PUT requests
-app.put('/destinations/:destinationId', (req, res) => {
-    console.log(req.params.destinationId);
-    res.status(200).send("Updated a destination");
-  })
-
-  //Listen for DELETE requests
-  app.delete('/destinations/:destinationId', (req, res) => {
-    res.status(204).end();
-  })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`server init at: localhost:${port}`)
 })
 
+ 
