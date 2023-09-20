@@ -96,6 +96,13 @@ margin-bottom: 40px;
     padding: 40px 0;
     border-bottom: var(--accent-border-color) 1px solid;
 }
+.destination_img {
+  height: auto;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
 
 .google-maps {
   color: #918E9B;
