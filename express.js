@@ -1,15 +1,15 @@
 const express = require('express')
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
 const app = express()
 const port = 4000
 
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({extended: true}))
+/* app.use(express.json()); */
 /* app.use(express.urlencoded({limit: '50mb'})); */
 
-/* app.use(express.json());
-app.use(express.urlencoded({extended: true})) */
+
 
 
 let uri = 'mongodb://127.0.0.1:27017/'
@@ -32,12 +32,12 @@ const destCollection = db.collection("destinations");
 app.get('/destinations/:destinationId', (req, res) => {
     //it knows what the id is because of the :id on the line above
   
-    res.status(200).send("You requested a destination with an id");
+    res.status(200).json("You requested a destination with an id");
 })
 app.get('/destinations/', async (req, res) => {
     const result = await destCollection.find().toArray();
     console.log(result);
-    res.status(200).json(result);
+    res.status(200).send(result);
     })
 
 //Listen for POST requests

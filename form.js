@@ -3,17 +3,32 @@ const apiEndPoint = "http://127.0.0.1:4000/destinations";
 const file = document.getElementById('file').value;
 let destinationArray = [];
 
+
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+let uri = 'mongodb://localhost:27017'
+
+const client = new MongoClient(uri,  {
+  serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+  }
+}
+);
+
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault(); 
   
     // collect the input values and create an object
     const destinationData = await collectDestinationData();
   
-    // For example, you can send it to your API endpoint via AJAX
+
     destinationArray.push(destinationData);
   
     // Reset the form (optional)
-    form.reset();
+   /*  form.reset(); */
   
     // You can log or work with the destinationData object here
     console.log(destinationData);
@@ -48,6 +63,7 @@ form.addEventListener('submit', async (event) => {
       };
       
       // send the POST request
+    console.log(destinationData,"destinationData inc collectDestinationData");
       await insertData(destinationData); 
 
     return destinationData;
@@ -69,7 +85,7 @@ form.addEventListener('submit', async (event) => {
         method: "POST",
         body: JSON.stringify(destinationData),
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/x-www-form-urlencoded", // Correct Content-Type header
         },
       });
   
@@ -83,6 +99,36 @@ form.addEventListener('submit', async (event) => {
       console.error("Error:", error);
     }
   }
+
+  
+  
+  
+  
+  
+  
+
+/*   async function insertData(destinationData) {
+    console.log(destinationData,"destinationData inc insertData");
+
+    const myDB = client.db("travel_destinations_ola");
+    const myColl = myDB.collection("destinations");
+    
+    const doc = { 
+      country: destinationData.country,
+      title: destinationData.title,
+      arrivalDate: destinationData.arrivalDate,
+      departureDate: destinationData.departureDate,
+      image: destinationData.image,
+      description: destinationData.description
+    };
+    const result = await myColl.insertOne(doc);
+  console.log(
+  `A document was inserted with the _id: ${result.insertedId}`,
+  );
+  return result.insertedId;
+  } */
+
+
 
 
 
