@@ -21,13 +21,12 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 function transform(data) {
   const elements = data.map((x) => {
-      console.log(x.image,"x");
       const clone = cloneTemplate();
       clone.querySelector(".country").innerText = x.country;
-      clone.querySelector(".location").innerText = x.location;
+      clone.querySelector(".location").innerText = x.title;
       clone.querySelector(".description").innerText = x.description;
       clone.querySelector(".arrival-date").innerText = x.arrival_date;
-      clone.querySelector(".leave-date").innerText = x.leave_date;
+      clone.querySelector(".leave-date").innerText = x.departure_date;
       clone.querySelector(".destination_img").src = x.image;
       clone.querySelector(".google-maps").href = "https://www.google.com/maps/place/K%C3%B8benhavn/data=!4m2!3m1!1s0x4652533c5c803d23:0x4dd7edde69467b8?sa=X&ved=2ahUKEwjTh6ry9bOBAxXxSPEDHUeTBGMQ8gF6BAgPEAA&ved=2ahUKEwjTh6ry9bOBAxXxSPEDHUeTBGMQ8gF6BAgSEAI"
       return clone;
