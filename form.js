@@ -14,10 +14,8 @@ async function sendForm(event) {
     // collect the input values and create an object
     await collectDestinationData();
 
+   
 
-
-    // Reset the form (optional)
-    /*  form.reset(); */
 }
 
 
@@ -81,6 +79,7 @@ const description = document.getElementById('description').value;
           "Content-Type": "application/json",
         },
       });
+
   
       if (response.ok) {
         const data =  await response.json();
@@ -93,11 +92,6 @@ const description = document.getElementById('description').value;
     }
   }});
   
-
-
-
-    //display the data on the page
-
 
 
 
