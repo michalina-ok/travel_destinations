@@ -23,4 +23,7 @@ if (params.get("showPopup") === "true") {
 
   function showPopup() {
         popup.classList.add("show")
+        setTimeout(() => {
+            popup.classList.remove("show");
+          }, 3000);
   }
