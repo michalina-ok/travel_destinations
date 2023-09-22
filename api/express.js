@@ -23,7 +23,7 @@ const client = new MongoClient(connectionString,  {
 const db = client.db("travel_destinations_ola");
 const destCollection = db.collection("destinations");
 
-app.use(express.json({limit: '25mb'}));
+app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({extended: true}))
 app.use(cors());
 
@@ -43,7 +43,7 @@ app.get('/destinations/', async (req, res) => {
 
 //Listen for POST requests
 app.post('/destination',  async (req, res) => {
-
+  console.log(req.body, "req.body");
 
         const doc = {
            title: req.body.title,
@@ -51,9 +51,10 @@ app.post('/destination',  async (req, res) => {
             arrival_date: req.body.arrival_date,
             departure_date: req.body.departure_date,
             image: req.body.image,
-            description: req.body.description
+            description: req.body.description,
+            link: req.body.link
          }
-     await destCollection.insertOne(doc);
+         await destCollection.insertOne(doc);
    
     res.status(201).send("Destination added");
   })

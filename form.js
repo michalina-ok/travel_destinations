@@ -14,9 +14,7 @@ async function sendForm(event) {
     // collect the input values and create an object
     await collectDestinationData();
 
-    redirect();
-
-
+    
 }
 
 function redirect() {
@@ -30,7 +28,7 @@ function redirect() {
      // Get values from the form inputs
  const country = document.getElementById('country').value;
  const title = document.getElementById('title').value;
- /* const link = document.getElementById('link').value; */
+ const link = document.getElementById('link').value;
  const arrivalDate = document.getElementById('arrivalDate').value
 // Create a day.js object from the input value
 const formattedArrivalDate = dayjs(arrivalDate).format('DD MMMM, YYYY');
@@ -43,23 +41,34 @@ const description = document.getElementById('description').value;
  const imageFile = imageInput.files[0];
  const base64 = await imageToBase64(imageFile);
 
+   // Validate the "title" and "country" fields
+   if (!title || !country) {
+    alert('Title and Country are required fields.');
+    return; // Stop further processing if validation fails
+}
+
+
   
 
     // Create an object with the collected data
     const destinationData = {
         country: country,
         title: title,
+        link: link,
         arrivalDate: formattedArrivalDate,
         departureDate: formattedDepartureDate,
         image: base64,
-        description: description
+        description: description,
       };
 
     destinationArray.push(destinationData);
+    console.log(destinationArray);
 
     
       // send the POST request
       await insertData(destinationData); 
+
+    redirect();
 
     return destinationData;
   }
@@ -84,7 +93,8 @@ const description = document.getElementById('description').value;
             arrival_date: destinationData.arrivalDate,
             departure_date: destinationData.departureDate,
             image: destinationData.image,
-            description: destinationData.description
+            description: destinationData.description,
+            link: destinationData.link
         }),
         headers: {
           "Content-Type": "application/json",

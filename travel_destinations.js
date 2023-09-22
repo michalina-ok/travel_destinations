@@ -11,9 +11,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   const body = await response.json()
   const base64value = Object.values(body)[0].image;
   const imageElement = base64ToImage(base64value);
-  console.log(base64value, "base64value");
-  console.log(imageElement, "imageElement");
   console.log(body)
+  body.forEach(element => {
+    console.log(element.link, "link of each elem")
+  });
   transform(body);
 })
 
@@ -28,7 +29,11 @@ function transform(data) {
       clone.querySelector(".arrival-date").innerText = dayjs(x.arrival_date).format('DD MMMM, YYYY');
       clone.querySelector(".leave-date").innerText = dayjs(x.departure_date).format('DD MMMM, YYYY');
       clone.querySelector(".destination_img").src = x.image;
-      clone.querySelector(".google-maps").href = "https://www.google.com/maps/place/K%C3%B8benhavn/data=!4m2!3m1!1s0x4652533c5c803d23:0x4dd7edde69467b8?sa=X&ved=2ahUKEwjTh6ry9bOBAxXxSPEDHUeTBGMQ8gF6BAgPEAA&ved=2ahUKEwjTh6ry9bOBAxXxSPEDHUeTBGMQ8gF6BAgSEAI"
+      if (x.link === "") {
+        clone.querySelector(".google-maps").remove();
+      } else {
+        clone.querySelector(".google-maps").href = x.link;
+      }
       return clone;
     });
   
