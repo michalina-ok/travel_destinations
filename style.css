@@ -31,16 +31,24 @@ a {
 .primary-button {
   font-size: 20px;
   display: flex;
-padding: 12px 32px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 5px;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
   background-color: var(--button-blue);
   color: var(--light-font-color);
   font-weight: 500;
   border: none;
   letter-spacing: -1.5px;
+  transition: all 0.3s ease;
+}
+.primary-button:hover {
+  background-color: #039be5;
+  cursor: pointer;
+}
+.primary-button:active {
+  transform: scale(0.925);
 }
 
 .primary-button p {
@@ -86,16 +94,32 @@ h2 {
 }
 
 .destinations-container {
-width: 60%;
-margin-bottom: 40px;
+  width: 60%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.card-info {
+  margin-left: 0;
+  margin-right: auto;
+  padding: 0 0.75rem;
 }
 
 .destination-card {
     display: flex;
-    gap: 19px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
     padding: 40px 0;
     border-bottom: var(--accent-border-color) 1px solid;
+    transition: all 0.3s ease-in-out;
 }
+@media only screen and (min-width:604px) {
+  .destination-card {
+    justify-content: flex-start;
+  }
+}
+
 .destination_img {
   height: auto;
   width: 100%;
@@ -111,13 +135,14 @@ margin-bottom: 40px;
 
 .location_information div {
   display: flex;
-  gap: 12px;
+  gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .location {
-  margin-top: 15px;
-  margin-bottom: 30px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .country {
