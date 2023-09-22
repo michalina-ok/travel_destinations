@@ -1,5 +1,5 @@
 const apiEndPoint = "http://127.0.0.1:4000/destination";
-const file = document.getElementById('file').value;
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('new-destination');
@@ -25,7 +25,11 @@ async function sendForm(event) {
  const title = document.getElementById('title').value;
  /* const link = document.getElementById('link').value; */
  const arrivalDate = document.getElementById('arrivalDate').value
+// Create a day.js object from the input value
+const formattedArrivalDate = dayjs(arrivalDate).format('DD MMMM, YYYY');
 const departureDate = document.getElementById('departureDate').value
+// Create a day.js object from the input value
+const formattedDepartureDate = dayjs(departureDate).format('DD MMMM, YYYY');
 const imageInput = document.getElementById('file');
 const description = document.getElementById('description').value;
  //convert image to base64
@@ -38,8 +42,8 @@ const description = document.getElementById('description').value;
     const destinationData = {
         country: country,
         title: title,
-        arrivalDate: arrivalDate,
-        departureDate: departureDate,
+        arrivalDate: formattedArrivalDate,
+        departureDate: formattedDepartureDate,
         image: base64,
         description: description
       };
