@@ -161,4 +161,31 @@ padding: 10px;
   color: var(--accent-color);
 }
 
+#notification {
+  font-size: 20px;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  gap: 20px;
+  background-color: #c2c2c2;
+  color: var(--accent-color);
+  font-weight: 500;
+  border: none;
+  letter-spacing: -1.5px;
+  margin: 10px;
+}
+
+#notification p {
+  margin:0;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
 

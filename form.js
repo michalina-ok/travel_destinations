@@ -14,8 +14,15 @@ async function sendForm(event) {
     // collect the input values and create an object
     await collectDestinationData();
 
-   
+    redirect();
 
+
+}
+
+function redirect() {
+  // Redirect to the main page
+  window.location.href = 'index.html?showPopup=true';
+ 
 }
 
 
