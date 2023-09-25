@@ -1,4 +1,5 @@
 import { base64ToImage } from "./utils/base64toImg.js";
+
 window.addEventListener("DOMContentLoaded", async () => {
   
   const response = await fetch("http://127.0.0.1:4000/destinations/", {
@@ -11,10 +12,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   const body = await response.json()
   const base64value = Object.values(body)[0].image;
   const imageElement = base64ToImage(base64value);
-  console.log(body)
-  body.forEach(element => {
-    console.log(element.link, "link of each elem")
-  });
   transform(body);
 })
 

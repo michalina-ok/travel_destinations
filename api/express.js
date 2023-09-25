@@ -25,7 +25,13 @@ const destCollection = db.collection("destinations");
 
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({extended: true}))
-app.use(cors());
+//allow request from different port origins
+const corsOptions = {
+  origin: 'http://127.0.0.1:5501', // Update this to match your frontend's origin
+};
+
+app.use(cors(corsOptions));
+
 
 
 
