@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel destinations</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="travel_destinations.js" defer type="module"></script>
   </head>
   <body>
     <header>
@@ -32,27 +31,30 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script>dayjs().format()</script>
   </body>
-  <template class="ui-card">
-    <div class="destination-card">
-      <img src="" class="destination_img" alt="" />
-      <div class="card-info">
-        <div class="location_information">
-          <div>
+  <div class="destinations-container">
+    <template class="ui-card">
+      <div class="destination-card">
+        <img src="" class="destination_img" alt="" />
+        <div class="card-info">
+          <div class="location_information">
             <div>
-              <img src="/assets/location_icon.svg" />
-              <div class="country"></div>
+              <div>
+                <img src="/assets/location_icon.svg" />
+                <div class="country"></div>
+              </div>
+              <a href="" target="_blank" class="google-maps">View on Google Maps</a>
             </div>
-            <a href="" target="_blank" class="google-maps">View on Google Maps</a>
+  
+            <div class="location"></div>
           </div>
-
-          <div class="location"></div>
+          <div class="stay-dates"><span class="arrival-date"></span> - <span class="leave-date"></span></div>
+          <p class="description"></p>
         </div>
-        <div class="stay-dates"><span class="arrival-date"></span> - <span class="leave-date"></span></div>
-        <p class="description"></p>
       </div>
-    </div>
-
-</template>
+  
+    </template>
+  </div>
+  <script type="module" src="/api/express.js" ></script>
+<script src="travel_destinations.js" defer type="module"></script>
 <script src="popup.js"></script>
-<script src="form.js"></script>
 </html>
