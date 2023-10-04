@@ -1,4 +1,4 @@
-const apiEndPoint = "http://127.0.0.1:4000/destination";
+const apiEndPoint = "http://127.0.0.1:4000/destinations";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
