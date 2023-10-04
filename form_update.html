@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Destination</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main>
+        <header>
+            <img src="/assets/globe_icon.svg" alt="globe icon">
+            <h1><a href="index.html">My travel journal.</a></h1></header>
+        <h2>Update your destination</h2>
+        <form id="update-destination"  
+        action="http://127.0.0.1:4000/destination" method="PUT">
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="country">Country <span class="required">*</span></label>
+                    <input type="text" id="country" name="country"  autofocus><br><br>
+                </div>
+            </div>
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="title">Title <span class="required">*</span></label>
+                    <input type="text" id="title" name="title"  autofocus ><br><br>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="link">Link</label>
+                    <input type="url" id="link" name="link" pattern="https?://.+" title="Enter a valid url"  value=""><br><br>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="arrivalDate">Arrival Date</label>
+                    <input type="date" id="arrivalDate" name="arrivalDate" required title="Enter a valid date"><br><br>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="departureDate">Departure Date</label>
+                    <input type="date" id="departureDate" name="departureDate" required title="Enter a valid date"><br><br>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="file">Upload a File</label>
+                    <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png, .webp" title="Please upload a valid file(.jpeg, .jpg, .png or .webp) file "><br><br>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-flex">
+                    <label for="description">Description</label><br>
+                    <textarea id="description" name="description" rows="4" cols="50" required ></textarea><br><br>
+                </div>
+            </div>
+
+        <div class="buttons-container">
+            <button type="button" id="cancelButton" class="secondary-button">Cancel</button>
+            <button type="submit" id="saveButton" class="primary-button">Save</button>
+        </div>
+
+        </form>
+
+    </main>
+    <script src="form_update.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+</body>
+</html>
+
+
+
