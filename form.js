@@ -1,11 +1,11 @@
 const apiEndPoint = "http://127.0.0.1:4000/destination";
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const form = document.getElementById('new-destination');
     let destinationArray = [];
     
-form.addEventListener('submit', sendForm);
+form.addEventListener('submit', await sendForm);
 
 async function sendForm(event) {
     console.log('sendForm called');
@@ -61,8 +61,6 @@ const description = document.getElementById('description').value;
         description: description,
       };
 
-    destinationArray.push(destinationData);
-    console.log(destinationArray);
 
     
       // send the POST request
@@ -84,8 +82,9 @@ const description = document.getElementById('description').value;
   }
 
    async function insertData(destinationData) {
+    
     try {
-      const response =  fetch(apiEndPoint, {
+      const response =  await fetch(apiEndPoint, {
         method: "POST",
         body: JSON.stringify({
             country: destinationData.country,
@@ -110,8 +109,8 @@ const description = document.getElementById('description').value;
       }
     } catch (error) {
       console.error("Error:", error);
-    }
-  }});
+    }}
+  });
   
 
 
