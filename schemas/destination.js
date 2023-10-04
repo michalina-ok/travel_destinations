@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const DestinationSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    title: { type: String, required: true },
     country: { type: String, required: true },
     dateStart: { type: Date },
     dateEnd: { type: Date },
