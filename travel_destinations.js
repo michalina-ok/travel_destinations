@@ -19,6 +19,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 function transform(data) {
   const elements = data.map((x) => {
+    console.log(x, "x");
       const clone = cloneTemplate();
       clone.querySelector(".country").innerText = x.country;
       clone.querySelector(".location").innerText = x.title;
@@ -31,6 +32,9 @@ function transform(data) {
       } else {
         clone.querySelector(".google-maps").href = x.link;
       }
+     // Set the data-id attribute to the object's ID
+    clone.querySelector(".destination-card").id = x._id;
+
       return clone;
     });
   

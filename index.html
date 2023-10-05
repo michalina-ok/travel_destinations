@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="travel_destinations.js" defer></script>
     <script type="module"src="./api/express.js" defer></script>
+    <script type="module" src="form_update.js" defer></script>
 
   </head>
   <body>
@@ -51,15 +52,15 @@
         <div class="stay-dates"><span class="arrival-date"></span> - <span class="leave-date"></span></div>
         <p class="description"></p>
       </div>
+      <a href="form.html" class="primary-button update-button">
+        <img src="/assets/plus-circle.svg" alt="" />
+        Update this destination
+      </a>
+      <button class="primary-button delete-button">
+        <img src="/assets/plus-circle.svg" alt="" />
+        Delete this destination
+      </button>
     </div>
-    <a href="/form_update.html" class="primary-button">
-      <img src="/assets/plus-circle.svg" alt="" />
-      <p>Update this destination</p>
-    </a>
-    <button class="primary-button delete-button">
-      <img src="/assets/plus-circle.svg" alt="" />
-      <p>Delete this destination</p>
-    </button>
 </template>
 <script src="popup.js"></script>
 <script src="delete.js"></script>
