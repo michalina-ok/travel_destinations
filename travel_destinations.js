@@ -46,6 +46,28 @@ function transform(data) {
     const clone = document.importNode(template.content, true);
     return clone;
   }
+
+
+  const container = document.querySelector(".destinations-container");
+
+container.addEventListener("click", (e) => {
+    if (e.target.classList.contains("update-button")) {
+        //get the parent destination card id 
+        const cardId = e.target.parentElement.id;
+
+
+         //Construct the URL with the object's ID as a query parameter
+         const url = `/form_update.html?id=${cardId}`;
+
+
+         // Set the href attribute of the link element
+          window.location.href = url; 
+    }
+
+})
   
   window.addEventListener("load", transform)
+
+
+
   
