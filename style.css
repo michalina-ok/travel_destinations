@@ -213,4 +213,12 @@ padding: 10px;
   display: flex;
 }
 
+.delete-button {
+  background-color: red;
+}
+
+.delete-button:hover {
+  background-color: rgb(224, 13, 13);
+}
+
 
