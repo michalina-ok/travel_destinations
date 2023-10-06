@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="travel_destinations.js" defer></script>
     <script type="module"src="./api/express.js" defer></script>
-
+    <script src="authentication.js" defer></script>
+    <script src="delete.js" defer></script>
   </head>
   <body>
     <header>
+      <div>
       <img src="/assets/globe_icon.svg" alt="globe icon" />
       <h1><a href="index.html">My travel journal.</a></h1>
+    </div>
+      <a href="login.html" class="primary-button">Log-in</a>
     </header>
     <main>
       <div id="notification">
@@ -56,11 +60,10 @@
       <img src="/assets/plus-circle.svg" alt="" />
       <p>Update this destination</p>
     </a>
-    <button class="primary-button delete-button">
+    <button class="delete-button">
       <img src="/assets/plus-circle.svg" alt="" />
       <p>Delete this destination</p>
     </button>
 </template>
 <script src="popup.js"></script>
-<script src="delete.js"></script>
 </html>
