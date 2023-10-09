@@ -30,6 +30,16 @@ function transform(data) {
       clone.querySelector(".arrival-date").innerText = dayjs(x.arrival_date).format('DD MMMM, YYYY');
       clone.querySelector(".leave-date").innerText = dayjs(x.departure_date).format('DD MMMM, YYYY');
       clone.querySelector(".destination_img").src = x.image;
+      clone.querySelector("#delete-button").style.display = 'none';
+           // Loop through each button and show/hide based on authentication status
+    const deleteButtons = clone.querySelectorAll("#delete-button");
+           deleteButtons.forEach(button => {
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (isLoggedIn === "true") {
+                console.log("logged in true")
+                clone.querySelector("#delete-button").style.display = "block" // Show the button for authenticated users
+            }
+        });
       if (x.link === "") {
         clone.querySelector(".google-maps").remove();
       } else {

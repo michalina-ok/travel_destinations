@@ -1,17 +1,10 @@
     //logic for authentication      
-    const isAuthenticated = false;
-      
-      
-      // Get all buttons with the class "auth-button"
-      const deleteButtons = document.querySelectorAll('.delete-button');
+    localStorage.setItem('isLoggedIn', false);
 
-      // Loop through each button and show/hide based on authentication status
-      deleteButtons.forEach(button => {
-          if (isAuthenticated) {
-              console.log("true")
-              button.style.display = 'inline-block'; // Show the button for authenticated users
-          } else {
-              console.log("false")
-              button.style.display = 'none'; // Hide the button for unauthenticated users
-          }
-      });
+    // retrieve the values from the form
+
+    //make a POST request to the  http://127.0.0.1:4000/auth/login endpoint
+
+    //if the response is ok, store the token in local storage and redirect to the home page
+
+      
