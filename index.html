@@ -7,8 +7,13 @@
     <title>Travel destinations</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="travel_destinations.js" defer></script>
-    <script type="module"src="./api/express.js" defer></script>
+
     <script src="authentication.js" defer></script>
+
+    <script type="module" src="form_update.js" defer></script>
+    <script type="module" src="delete.js" defer></script>
+    <script src="popup.js" defer></script>
+
   </head>
   <body>
     <header>
@@ -21,13 +26,13 @@
     <main>
       <div id="notification">
         <p>
-        Your destination was added
-      </p>
-      <img id="close_icon" src="/assets/close.svg" alt="Closing icon">
-        </div>
+          Your destination was added
+        </p>
+        <img id="close_icon" src="/assets/close.svg" alt="Closing icon">
+      </div>
       <h2>Destinations</h2>
       <div class="destinations-container">
-        </div>
+      </div>
       <a href="/form.html" class="primary-button">
         <img src="/assets/plus-circle.svg" alt="" />
         <p>Add entry</p>
@@ -49,21 +54,22 @@
             </div>
             <a href="" target="_blank" class="google-maps">View on Google Maps</a>
           </div>
-
+          
           <div class="location"></div>
         </div>
         <div class="stay-dates"><span class="arrival-date"></span> - <span class="leave-date"></span></div>
         <p class="description"></p>
       </div>
+      <a href="/form_update.html" class="primary-button">
+        <img src="/assets/plus-circle.svg" alt="" />
+        <p>Update this destination</p>
+      </a>
+      <button class="primary-button" id="delete-button">
+        Delete this destination
+        <img src="/assets/plus-circle.svg" alt="" />
+      </button>
     </div>
-    <a href="/form_update.html" class="primary-button">
-      <img src="/assets/plus-circle.svg" alt="" />
-      <p>Update this destination</p>
-    </a>
-    <button class="delete-button">
-      <img src="/assets/plus-circle.svg" alt="" />
-      <p>Delete this destination</p>
-    </button>
-</template>
-<script src="popup.js"></script>
-</html>
+
+  </template>
+  </html>
+

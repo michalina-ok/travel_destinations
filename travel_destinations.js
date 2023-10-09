@@ -1,4 +1,5 @@
 import { base64ToImage } from "./utils/base64toImg.js";
+import deleteEntry from "./delete.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
   
@@ -13,13 +14,16 @@ window.addEventListener("DOMContentLoaded", async () => {
   const base64value = Object.values(body)[0].image;
   const imageElement = base64ToImage(base64value);
   transform(body);
+  deleteEntry();
 })
 
 
 
 function transform(data) {
   const elements = data.map((x) => {
+    console.log(x, "x");
       const clone = cloneTemplate();
+      clone.querySelector(".destination-card").id = x._id;
       clone.querySelector(".country").innerText = x.country;
       clone.querySelector(".location").innerText = x.title;
       clone.querySelector(".description").innerText = x.description;
@@ -31,6 +35,9 @@ function transform(data) {
       } else {
         clone.querySelector(".google-maps").href = x.link;
       }
+     // Set the data-id attribute to the object's ID
+    clone.querySelector(".destination-card").id = x._id;
+
       return clone;
     });
   
@@ -42,6 +49,28 @@ function transform(data) {
     const clone = document.importNode(template.content, true);
     return clone;
   }
+
+
+  const container = document.querySelector(".destinations-container");
+
+container.addEventListener("click", (e) => {
+    if (e.target.classList.contains("update-button")) {
+        //get the parent destination card id 
+        const cardId = e.target.parentElement.id;
+
+
+         //Construct the URL with the object's ID as a query parameter
+         const url = `/form_update.html?id=${cardId}`;
+
+
+         // Set the href attribute of the link element
+          window.location.href = url; 
+    }
+
+})
   
   window.addEventListener("load", transform)
+
+
+
   
