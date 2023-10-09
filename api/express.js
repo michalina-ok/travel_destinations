@@ -74,20 +74,6 @@ app.get('/destinations/:destinationId', (req, res) => {
         .catch((error) => console.log(error));
     });
 
-//LISTEN FOR DELETE REQUESTS
-app.delete('/destinations/:destinationId', passport.authenticate('jwt', {session: false}), (req, res) => {
-
-  if (mongoose.connection.readyState !== 1) {
-    return res.status(500).json({ message: 'Database not connected' });
-  }
-
-  console.log('Decoded token:', req.user);
-  Destination.deleteOne({_id: req.params.destinationId}).then( result => {
-      res.status(200).json({message: 'Success'});
-  })
-  
-})
-
 
 
 //Listen for POST requests
@@ -125,8 +111,46 @@ app.delete('/destinations/:destinationId', passport.authenticate('jwt', {session
       .catch((error) => console.log(error));
   });
 
-//user signup request
 
+
+  ///DELETE REQUEST
+ 
+/* app.delete('/destinations/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+  Destination.deleteOne({_id: req.params.id}).then(result => {
+      res.status(200).json({message: 'Success'});
+  })
+}) */
+
+app.delete('/destinations/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  mongoose
+    .connect('mongodb://127.0.0.1:27017/travel_destinations_ola')
+    .then(() => {
+      console.log("MongoDB Connected...");
+      const destinationId = req.params.id;
+
+      Destination.deleteOne({ _id: destinationId })
+        .then((result) => {
+          console.log("Destination deleted:", result);
+          res.status(200).json({ message: 'Success' });
+        })
+        .catch((err) => {
+          console.error("Error deleting destination:", err);
+          res.status(500).json({ error: "Error deleting destination", err });
+        })
+        .finally(() => {
+          console.log("MongoDB Connection Closed");
+          mongoose.disconnect();
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Error connecting to MongoDB", error });
+    });
+});
+
+
+
+//user signup request
 app.post("/auth/signup", (req, res) => {
   mongoose
     .connect('mongodb://127.0.0.1:27017/travel_destinations_ola')
@@ -163,9 +187,8 @@ app.post('/auth/login', (req, res) => {
 
   User.findOne({email: req.body.email}).then( async (user) => {
       if(await user.isValidPassword(req.body.password)) {
-        console.log("user found", user);
           const generatedToken = jwt.sign({_id: user._id}, process.env.jwt_secret);
-          res.status(200).json({token: generatedToken})
+          res.status(200).json({token: generatedToken, message: 'Login successful'})
           return;
       }
       res.status(401).json({message: 'Invalid login'}); // email match, but password does not!
