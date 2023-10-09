@@ -52,12 +52,35 @@ const User = require('../schemas/user.js');
 
 
 //Listen for GET requests
-app.get('/destinations/:destinationId', (req, res) => {
+app.get("/destinations/:destinationId", (req, res) => {
+  const destinationId = req.params.destinationId
+  console.log(destinationId, "destinationId");
+
+  mongoose
+    .connect('mongodb://127.0.0.1:27017/travel_destinations_ola')
+    .then(() => {
+      console.log("MongoDB Connected...");
+      Destination.findById(destinationId)
+        .then((destination) => res.status(200).json(destination))
+        .catch((err) => res.status(500).json({ error: "Error Fetching Destinations:", err }))
+        .finally(() => {
+          console.log("MongoDB Connection Closed");
+          mongoose.disconnect();
+        });
+    })
+    .catch((error) => console.log(error));
+});
+
+
+/* app.get('/destinations/:destinationId', (req, res) => {
     //it knows what the id is because of the :id on the line above
+ 
   
     res.status(200).json("You requested a destination with an id");
-})
+}) */
 
+
+//Listen for GET requests
     app.get("/destinations", (req, res) => {
       mongoose
         .connect('mongodb://127.0.0.1:27017/travel_destinations_ola')
