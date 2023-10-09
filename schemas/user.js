@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const bcrypt = require('bcrypt');
 
 const User = new mongoose.Schema({
@@ -25,3 +26,4 @@ User.methods.isValidPassword = async function(password) {
 
 
 module.exports = mongoose.model('User', User);
+

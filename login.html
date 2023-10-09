@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel destinations</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="travel_destinations.js" defer></script>
+    <script type="module"src="./api/express.js" defer></script>
+
+  </head>
+  <body>
+    <header>
+      <div>
+      <img src="/assets/globe_icon.svg" alt="globe icon" />
+      <h1><a href="index.html">My travel journal.</a></h1>
+    </div>
+    </header>
+    <main>
+        <h2>Log-in</h2>
+        <form id="login" action="" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required><br><br>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" class="primary-button" value="Continue">
+        </form>
+    
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
+  </body>
+<script src="popup.js"></script>
+<script src="delete.js"></script>
+</html>

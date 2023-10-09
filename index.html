@@ -7,14 +7,21 @@
     <title>Travel destinations</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="travel_destinations.js" defer></script>
+
+    <script src="authentication.js" defer></script>
+
     <script type="module" src="form_update.js" defer></script>
     <script type="module" src="delete.js" defer></script>
     <script src="popup.js" defer></script>
+
   </head>
   <body>
     <header>
+      <div>
       <img src="/assets/globe_icon.svg" alt="globe icon" />
       <h1><a href="index.html">My travel journal.</a></h1>
+    </div>
+      <a href="login.html" class="primary-button">Log-in</a>
     </header>
     <main>
       <div id="notification">
@@ -33,6 +40,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script>dayjs().format()</script>
+    <script src="delete.js" defer></script>
   </body>
   <template class="ui-card">
     <div class="destination-card">
@@ -61,5 +69,7 @@
         <img src="/assets/plus-circle.svg" alt="" />
       </button>
     </div>
+
   </template>
   </html>
+

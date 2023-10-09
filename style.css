@@ -71,10 +71,15 @@ letter-spacing: -1.5px;
 
 header {
   display: flex;
+  justify-content: space-between;
   gap: 12px;
-  width: 100%;
   background-color: var(--accent-color);
-  padding-left: 12px;
+  padding: 12px;
+}
+
+header div {
+  display: flex;
+  gap: 12px;
 }
 
 header a {
@@ -213,4 +218,22 @@ padding: 10px;
   display: flex;
 }
 
+input[id="username"],
+input[id="password"] {
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+form#login {
+    display: flex;
+    flex-direction: column;
+}
+
+form#login label {
+  margin-bottom: 12px;
+}
+
+form#login input {
+  min-width: 200px;
+}
 

@@ -16,3 +16,4 @@ const deleteEntry = () => {
 };
 
 export default deleteEntry;
+
