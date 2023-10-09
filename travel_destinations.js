@@ -1,4 +1,5 @@
 import { base64ToImage } from "./utils/base64toImg.js";
+import deleteEntry from "./delete.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
   
@@ -13,6 +14,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const base64value = Object.values(body)[0].image;
   const imageElement = base64ToImage(base64value);
   transform(body);
+  deleteEntry();
 })
 
 
@@ -21,6 +23,7 @@ function transform(data) {
   const elements = data.map((x) => {
     console.log(x, "x");
       const clone = cloneTemplate();
+      clone.querySelector(".destination-card").id = x._id;
       clone.querySelector(".country").innerText = x.country;
       clone.querySelector(".location").innerText = x.title;
       clone.querySelector(".description").innerText = x.description;

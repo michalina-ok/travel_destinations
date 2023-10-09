@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <div class="input-container">
+            <div class="input-flex">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required autofocus><br><br>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-flex">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="password" name="password" required><br><br>
+            </div>
+        </div>
+        <!-- input for submit -->
+        <div class="input-container">
+            <div class="input-flex">
+                <input type="submit" value="Sign up" class="primary-button" id="sign-up-btn">
+            </div>
+        </div>
+    </form>
+    <!-- login form -->
+    <form action="" id="login-form">
+        <div class="input-container">
+            <div class="input-flex">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="login-email" name="email" required autofocus><br><br>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-flex">
+                <label for="password">Password <span class="required">*</span></label>
+                <input type="password" id="login-password" name="password" required><br><br>
+            </div>
+        </div>
+        <!-- input for submit -->
+        <div class="input-container">
+            <div class="input-flex">
+                <input type="submit" value="Sign in" class="primary-button" id="sign-in-btn">
+            </div>
+        </div>
+    </form>
+
+
+    <script src="signup.js" defer></script>
+    <script src="login.js" defer></script>
+</body>
+</html>
