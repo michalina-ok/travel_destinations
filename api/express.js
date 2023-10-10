@@ -38,9 +38,13 @@ app.use(passport.initialize());
 
 //allow request from different port origins
 const corsOptions = {
-  origin: 'http://127.0.0.1:5501',
+  origin: [
+    'http://127.0.0.1:5501',
+    'http://127.0.0.1:5501/login.html',
+    'http://127.0.0.1:5501/login'
+  ],
   //allow post requests
-  methods: "GET,PUT,PATCH,POST,DELETE",
+  methods: ["GET,POST,PUT,DELETE"],
    // Update this to match your frontend's origin
 };
 app.use(cors(corsOptions));
@@ -206,20 +210,24 @@ app.post("/auth/signup", (req, res) => {
 });
 
 
-app.post('/auth/login', (req, res) => {
+//user login request
+app.post('/auth/login', cors(corsOptions), (req, res, next) => {
+  mongoose.connect('mongodb://127.0.0.1:27017/travel_destinations_ola')
+  .then(() => {
+    console.log("MongoDB Connected...");
 
-  User.findOne({email: req.body.email}).then( async (user) => {
+    User.findOne({email: req.body.email}).then( async (user) => {
       if(await user.isValidPassword(req.body.password)) {
-          const generatedToken = jwt.sign({_id: user._id}, process.env.jwt_secret);
-          res.status(200).json({token: generatedToken, message: 'Login successful'})
-          return;
+        const generatedToken = jwt.sign({_id: user._id}, process.env.jwt_secret);
+        res.status(200).json({success:true, token: generatedToken, message: 'Login successful'})
+        return;
       }
-      res.status(401).json({message: 'Invalid login'}); // email match, but password does not!
+      res.status(401).json({success:false, message: 'Invalid login'}); // email match, but password does not!
       return;
-  }).catch(error => {
-      res.status(401).json({message: 'Invalid login'}); // email does not match.
+    }).catch(error => {
+      res.status(401).json({success:false, message: 'Invalid login'}); // email does not match.
+    })
   })
-  
 });
 
 
