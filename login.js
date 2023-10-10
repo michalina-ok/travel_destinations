@@ -1,6 +1,6 @@
 const loginEndpoint = "http://127.0.0.1:4000/auth/login";
 
-document.querySelector("#sign-up-btn").addEventListener("click", async (e) => {
+document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
     e.preventDefault();
 
         const response =  await fetch(loginEndpoint, {
@@ -17,7 +17,10 @@ document.querySelector("#sign-up-btn").addEventListener("click", async (e) => {
     
         if (response.ok) {
           const data =  await response.json();
-          console.log(data); // Handle the response from the server if needed
+          console.log(data); 
+          
+          
+          // Handle the response from the server if needed
         } else {
           console.error("Error sending data to the server.");
         }
