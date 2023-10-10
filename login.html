@@ -19,19 +19,19 @@
     </header>
     <main>
         <h2>Log-in</h2>
-        <form id="login" action="" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required><br><br>
-            
+        <form id="login">
+          <label for="email">E-mail</label>
+          <input type="text" id="email" name="email" required>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <input type="submit" class="primary-button" value="Continue">
+            <input type="password" id="password" name="password" required>
+            <a href="index.html" id="log-in-btn" class="primary-button">Continue</a>
         </form>
-    
+    <p>Don't have an account? <a href="signup.html" id="signup-link">Sign up</a></p>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script>dayjs().format()</script>
   </body>
+  <script src="login.js"></script>
 <script src="popup.js"></script>
 <script src="delete.js"></script>
 </html>

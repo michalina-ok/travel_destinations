@@ -218,22 +218,31 @@ padding: 10px;
   display: flex;
 }
 
-input[id="username"],
+input[id="email"],
 input[id="password"] {
     padding: 12px;
     margin-bottom: 10px;
 }
 
-form#login {
+form#login, form#signup {
     display: flex;
     flex-direction: column;
 }
 
-form#login label {
+form#login label, form#signup label {
   margin-bottom: 12px;
 }
 
-form#login input {
+form#login input, form#signup input {
   min-width: 200px;
+}
+
+#sign-up-btn, #log-in-btn {
+  margin-top: 24px;
+}
+
+#signup-link {
+  color: var(--button-blue);
+  font-weight: 500;
 }
 
