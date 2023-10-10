@@ -93,10 +93,10 @@ app.get("/destinations/:destinationId", (req, res) => {
           Destination.find()
             .then((destinations) => res.status(200).json(destinations))
             .catch((err) => res.status(500).json({ error: "Error Fetching Destinations:", err }))
-            .finally(() => {
+           /*  .finally(() => {
               console.log("MongoDB Connection Closed");
               mongoose.disconnect();
-            });
+            }); */
         })
         .catch((error) => console.log(error));
     });

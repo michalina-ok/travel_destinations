@@ -31,6 +31,7 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
         } else {
           //call function to show success message on the UI
           console.log(res.token, "login successful");
+          localStorage.setItem("token", res.token);
           loginForm.reset();
           window.location.href = "index.html";
         }
@@ -38,21 +39,7 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {
-        console.log("MongoDB Connection Closed");
-        mongoose.disconnect();
-      });
 
-   /*    if (response.ok) {
-        const data =  await response.json();
-        console.log(data); 
-        format.reset();
-        
-        // Handle the response from the server if needed
-      } else {
-        console.error("Error sending data to the server.");
-        //call function to show error message on the UI
-      } */
     } else {
       console.log("invalid input");
       //call function to show invalid input message on the UI
