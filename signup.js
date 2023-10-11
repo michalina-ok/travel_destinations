@@ -13,11 +13,14 @@ document.querySelector("#sign-up-btn").addEventListener("click", async (e) => {
             "Content-Type": "application/json",
           },
         });
-  
+   setTimeout( () => {
+    showPopUp()
+   }, 3000)
     
         if (response.ok) {
           const data =  await response.json();
-          window.location.href = "login.html";
+         //showPopup();
+          window.location.href = "login.html?signedUp";
           console.log(data); // Handle the response from the server if needed
         } else {
           console.error("Error sending data to the server.");

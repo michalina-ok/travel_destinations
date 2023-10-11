@@ -9,7 +9,6 @@ const app = express()
 const port = 4000
 dotenv.config();
 
-
 console.log(process.env.jwt_secret);
 
 app.use(express.json({limit: '50mb'}));
@@ -75,15 +74,6 @@ app.get("/destinations/:destinationId", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-
-/* app.get('/destinations/:destinationId', (req, res) => {
-    //it knows what the id is because of the :id on the line above
- 
-  
-    res.status(200).json("You requested a destination with an id");
-}) */
-
-
 //Listen for GET requests
     app.get("/destinations", (req, res) => {
       mongoose
@@ -141,12 +131,6 @@ app.get("/destinations/:destinationId", (req, res) => {
 
 
   ///DELETE REQUEST
- 
-/* app.delete('/destinations/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Destination.deleteOne({_id: req.params.id}).then(result => {
-      res.status(200).json({message: 'Success'});
-  })
-}) */
 
 app.delete('/destinations/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   mongoose

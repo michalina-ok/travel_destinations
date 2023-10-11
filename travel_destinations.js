@@ -2,7 +2,20 @@ import { base64ToImage } from "./utils/base64toImg.js";
 import deleteEntry from "./delete.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
-  
+//check if token still valid
+  const token = localStorage.getItem("token");
+  const expirationTime = localStorage.getItem("expirationTime");
+
+  if (token && expirationTime && new Date().getTime() < expirationTime) {
+    // Token is still valid
+    console.log("Token is still valid");
+  } else {
+    // Token has expired or is not present
+    console.log("Token has expired or is not present");
+    localStorage.removeItem("token");
+  }
+
+
   const response = await fetch("http://127.0.0.1:4000/destinations/", {
    method: "GET",
    headers: {

@@ -32,8 +32,10 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
           //call function to show success message on the UI
           console.log(res.token, "login successful");
           localStorage.setItem("token", res.token);
+          // set token expiration time to 20 minutes
+          localStorage.setItem("expirationTime", new Date().getTime() + 20 * 60 * 1000);
           loginForm.reset();
-          window.location.href = "index.html";
+          window.location.href = "index.html?loggedIn";
         }
       })
       .catch((err) => {
