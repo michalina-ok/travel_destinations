@@ -191,9 +191,9 @@ padding: 10px;
   color: var(--accent-color);
 }
 
-#notification {
+.notification {
   font-size: 20px;
-  padding: 12px 32px;
+  padding: 6px 24px;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -246,3 +246,6 @@ form#login input, form#signup input {
   font-weight: 500;
 }
 
+#login-info {
+  color: var(--light-font-color);
+}

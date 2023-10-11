@@ -33,7 +33,7 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
           console.log(res.token, "login successful");
           localStorage.setItem("token", res.token);
           loginForm.reset();
-          window.location.href = "index.html";
+          window.location.href = "index.html?loggedIn";
         }
       })
       .catch((err) => {

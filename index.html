@@ -7,39 +7,36 @@
     <title>Travel destinations</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="travel_destinations.js" defer></script>
-
     <script src="authentication.js" defer></script>
-
     <script type="module" src="form_update.js" defer></script>
     <script type="module" src="delete.js" defer></script>
     <script src="popup.js" defer></script>
-
   </head>
   <body>
     <header>
       <div>
-      <img src="/assets/globe_icon.svg" alt="globe icon" />
-      <h1><a href="index.html">My travel journal.</a></h1>
-    </div>
-      <a href="login.html" class="primary-button">Log-in</a>
+        <img src="/assets/globe_icon.svg" alt="globe icon" />
+        <h1><a href="index.html">My travel journal.</a></h1>
+      </div>
+      <a href="login.html" id="login-btn" class="primary-button">Log-in</a>
+      <p id="login-info" class="hide">Logged-in user: {username}</p>
     </header>
     <main>
-      <div id="notification">
-        <p>
-          Your destination was added
-        </p>
-        <img id="close_icon" src="/assets/close.svg" alt="Closing icon">
+      <div id="notification_index" class="notification hide">
+        <p>Your destination was added</p>
+        <img id="close_icon" src="/assets/close.svg" alt="Closing icon" />
       </div>
       <h2>Destinations</h2>
-      <div class="destinations-container">
-      </div>
+      <div class="destinations-container"></div>
       <a href="/form.html" class="primary-button">
         <img src="/assets/plus-circle.svg" alt="" />
         <p>Add entry</p>
       </a>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script>dayjs().format()</script>
+    <script>
+      dayjs().format();
+    </script>
     <script src="delete.js" defer></script>
   </body>
   <template class="ui-card">
@@ -54,7 +51,7 @@
             </div>
             <a href="" target="_blank" class="google-maps">View on Google Maps</a>
           </div>
-          
+
           <div class="location"></div>
         </div>
         <div class="stay-dates"><span class="arrival-date"></span> - <span class="leave-date"></span></div>
@@ -69,7 +66,5 @@
         <img src="/assets/plus-circle.svg" alt="" />
       </button>
     </div>
-
   </template>
-  </html>
-
+</html>
