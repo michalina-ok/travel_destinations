@@ -202,7 +202,7 @@ app.post('/auth/login', cors(corsOptions), (req, res, next) => {
 
     User.findOne({email: req.body.email}).then( async (user) => {
       if(await user.isValidPassword(req.body.password)) {
-        const generatedToken = jwt.sign({_id: user._id, exp: Math.floor(Date.now() / 1000) + (30 * 60)}, process.env.jwt_secret);
+        const generatedToken = jwt.sign({_id: user._id}, process.env.jwt_secret);
         res.status(200).json({success:true, token: generatedToken, message: 'Login successful'})
         return;
       }
