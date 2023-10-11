@@ -36,7 +36,9 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
           // set token expiration time to 20 minutes
           localStorage.setItem("expirationTime", new Date().getTime() + 20 * 60 * 1000);
           loginForm.reset();
+          setTimeout( () => {
           window.location.href = "index.html?loggedIn";
+          }, 300)
           showLoginInfo();
         }
       })
@@ -50,3 +52,19 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
     }
       
 });
+
+
+/* function checkLoginStatus() {
+  const token = localStorage.getItem("token");
+  const expirationTime = localStorage.getItem("expirationTime");
+  if (token && expirationTime && new Date().getTime() < expirationTime) {
+    // Token is still valid
+    console.log("Token is still valid");
+    document.querySelector("#log-in-btn").innerHTML = "Sign out";
+  } else {
+    // Token has expired or is not present
+    console.log("Token has expired or is not present");
+    localStorage.removeItem("token");
+  }
+}
+export default checkLoginStatus; */

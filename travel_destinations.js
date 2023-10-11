@@ -1,10 +1,14 @@
 import { base64ToImage } from "./utils/base64toImg.js";
 import deleteEntry from "./delete.js";
+// import checkLoginStatus from "./login.js"; 
 
-window.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("load", async () => {
 //check if token still valid
   const token = localStorage.getItem("token");
   const expirationTime = localStorage.getItem("expirationTime");
+  //call function to check log in status
+ /*  checkLoginStatus(); */
+
 
   if (token && expirationTime && new Date().getTime() < expirationTime) {
     // Token is still valid
