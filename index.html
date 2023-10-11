@@ -7,7 +7,6 @@
     <title>Travel destinations</title>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="travel_destinations.js" defer></script>
-    <script src="authentication.js" defer></script>
     <script type="module" src="form_update.js" defer></script>
     <script type="module" src="delete.js" defer></script>
     <script src="popup.js" defer></script>
@@ -19,7 +18,7 @@
         <h1><a href="index.html">My travel journal.</a></h1>
       </div>
       <a href="login.html" id="login-btn" class="primary-button">Log-in</a>
-      <p id="login-info" class="hide">Logged-in user: {username}</p>
+      <p id="login-info" class="hide">Logged-in user: <span id="userName"></span></p>
     </header>
     <main>
       <div id="notification_index" class="notification hide">
