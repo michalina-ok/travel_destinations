@@ -2,7 +2,7 @@ import { base64ToImage } from "./utils/base64toImg.js";
 import deleteEntry from "./delete.js";
 
 window.addEventListener("DOMContentLoaded", async () => {
-  
+
   const response = await fetch("http://127.0.0.1:4000/destinations/", {
    method: "GET",
    headers: {
