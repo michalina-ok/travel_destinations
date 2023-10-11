@@ -13,7 +13,9 @@ document.querySelector("#sign-up-btn").addEventListener("click", async (e) => {
             "Content-Type": "application/json",
           },
         });
-  
+   setTimeout( () => {
+    showPopUp()
+   }, 3000)
     
         if (response.ok) {
           const data =  await response.json();
