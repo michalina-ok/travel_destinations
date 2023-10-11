@@ -14,12 +14,17 @@ window.addEventListener("DOMContentLoaded", async () => {
   const base64value = Object.values(body)[0].image;
   const imageElement = base64ToImage(base64value);
   transform(body);
-  deleteEntry();
 })
 
 
 
 function transform(data) {
+  console.log("transform called", data);
+
+  //clear existing content 
+  const container = document.querySelector(".destinations-container");
+  container.innerHTML = "";
+  
   const elements = data.map((x) => {
     console.log(x, "x");
       const clone = cloneTemplate();
@@ -30,16 +35,17 @@ function transform(data) {
       clone.querySelector(".arrival-date").innerText = dayjs(x.arrival_date).format('DD MMMM, YYYY');
       clone.querySelector(".leave-date").innerText = dayjs(x.departure_date).format('DD MMMM, YYYY');
       clone.querySelector(".destination_img").src = x.image;
-      clone.querySelector("#delete-button").style.display = 'none';
+      clone.querySelector("#delete-button").style.display = 'block';
+      clone.querySelector("#delete-button").addEventListener("click", deleteEntry)
            // Loop through each button and show/hide based on authentication status
-    const deleteButtons = clone.querySelectorAll("#delete-button");
-           deleteButtons.forEach(button => {
+
+    /*        deleteButtons.forEach(button => {
             const isLoggedIn = localStorage.getItem("isLoggedIn");
             if (isLoggedIn === "true") {
                 console.log("logged in true")
                 clone.querySelector("#delete-button").style.display = "block" // Show the button for authenticated users
             }
-        });
+        }); */
       if (x.link === "") {
         clone.querySelector(".google-maps").remove();
       } else {
@@ -78,6 +84,15 @@ container.addEventListener("click", (e) => {
     }
 
 })
+
+    const deleteButtons = document.querySelectorAll("#delete-button");
+    deleteButtons.forEach(button => {
+      button.addEventListener("click", async () => {
+        deleteEntry()
+      });
+    })
+
+    export default transform
   
   window.addEventListener("load", transform)
 
