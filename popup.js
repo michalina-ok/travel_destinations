@@ -39,17 +39,15 @@ function closePopup() {
  
 
   function showPopup() {
-    console.log("calling showPopup")
         popup.classList.add("show")
         setTimeout(() => {
             popup.classList.remove("show");
           }, 3000);
   }
 
-  function showLoginInfo(user){
-    console.log(user, "user")
-    console.log("calling showLoginInfo")
-    displayedUser.textContent = user;
+  function showLoginInfo(){
+    const username = localStorage.getItem("username");
+    displayedUser.innerHTML = `Logged in as ${username}`;
     login_info.classList.add("show")
     login_button.classList.add("hide")
   }

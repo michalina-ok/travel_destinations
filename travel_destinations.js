@@ -32,8 +32,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 function transform(data) {
-  console.log("transform called", data);
-
   //clear existing content 
   const container = document.querySelector(".destinations-container");
   container.innerHTML = "";
