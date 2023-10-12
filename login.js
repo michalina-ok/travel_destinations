@@ -30,12 +30,16 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
           console.log("invalid credentials");
         } else {
           //call function to show success message on the UI
-          console.log(res.token, "login successful");
+          console.log(res, "login successful response");
           localStorage.setItem("token", res.token);
-          // set token expiration time to 20 minutes
-          localStorage.setItem("expirationTime", new Date().getTime() + 20 * 60 * 1000);
+          localStorage.setItem("username", res.email);
+          // set token expiration time to 2 minutes
+          localStorage.setItem("expirationTime", new Date().getTime() + 2 * 60 * 1000);
           loginForm.reset();
+          setTimeout( () => {
           window.location.href = "index.html?loggedIn";
+          }, 300)
+          showLoginInfo();
         }
       })
       .catch((err) => {
@@ -48,3 +52,5 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
     }
       
 });
+
+

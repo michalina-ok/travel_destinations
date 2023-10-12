@@ -2,7 +2,7 @@ const popup = document.querySelector(".notification")
 const close_icon = document.getElementById("close_icon")
 const login_info = document.getElementById("login-info")
 const displayedUser = document.getElementById("userName")
-const login_button = document.getElementById("login-btn")
+const login_button = document.getElementById("log-in-btn")
 const popup_index = document.getElementById("notification_index");
 const popup_login = document.getElementById("notification_login");
 
@@ -39,19 +39,30 @@ function closePopup() {
  
 
   function showPopup() {
-    console.log("calling showPopup")
         popup.classList.add("show")
         setTimeout(() => {
             popup.classList.remove("show");
           }, 3000);
   }
 
-  function showLoginInfo(user){
-    console.log(user, "user")
-    console.log("calling showLoginInfo")
-    displayedUser.textContent = user;
-    login_info.classList.add("show")
-    login_button.classList.add("hide")
+  function showLoginInfo(){
+    const token = localStorage.getItem("token");
+    const username = localStorage.getItem("username");
+    const expirationTime = localStorage.getItem("expirationTime");
+
+    
+    if (token && expirationTime && new Date().getTime() < expirationTime) {
+      // Token is still valid
+      login_button.classList.add("hide")
+      login_info.classList.add("show")
+      displayedUser.innerHTML = `Logged in as ${username}`;
+      console.log("Token is still valid");
+      document.querySelector("#log-in-btn").classList.add("hide");
+    } else {
+      // Token has expired or is not present
+      console.log("Token has expired or is not present");
+      localStorage.removeItem("token");
+    }
   }
 
 

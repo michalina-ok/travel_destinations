@@ -202,12 +202,10 @@ app.post('/auth/login', cors(corsOptions), (req, res, next) => {
 
 
     User.findOne({email: req.body.email}).then( async (user) => {
-      if(await user.isValidPassword(req.body.password)) {
-        console.log(res.status.json(), "res");
-        
+      const { email, password } = req.body;
+      if(await user.isValidPassword(req.body.password)) {     
         const generatedToken = jwt.sign({_id: user._id}, process.env.jwt_secret);
-        res.status(200).json({success:true, token: generatedToken, message: 'Login successful'})
-       /*  showLoginInfo(res.status.json().body.email); */
+        res.status(200).json({success:true, token: generatedToken,email: email, message: 'Login successful'})
         return;
       }
       res.status(401).json({success:false, message: 'Invalid login'}); // email match, but password does not!
