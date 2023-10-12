@@ -24,7 +24,7 @@
     </header>
     <main>
       <div id="notification_index" class="notification hide">
-        <p>Your destination was added</p>
+        <p></p>
         <img id="close_icon" src="/assets/close.svg" alt="Closing icon" />
       </div>
       <h2>Destinations</h2>
@@ -38,7 +38,7 @@
     <script>
       dayjs().format();
     </script>
-    <script src="delete.js" defer></script>
+    <script type="module" src="delete.js" defer></script>
   </body>
   <template class="ui-card">
     <div class="destination-card">
@@ -58,14 +58,11 @@
         <div class="stay-dates"><span class="arrival-date"></span> - <span class="leave-date"></span></div>
         <p class="description"></p>
       </div>
-      <a href="/form_update.html" class="primary-button">
+      <a href="#" class="primary-button update-button">
         <img src="/assets/plus-circle.svg" alt="" />
-        <p>Update this destination</p>
+        Update this destination
       </a>
-      <button class="primary-button" id="delete-button">
-        Delete this destination
-        <img src="/assets/plus-circle.svg" alt="" />
-      </button>
+      <button class="primary-button hide" id="delete-button">Delete this destination</button>
     </div>
   </template>
 </html>
