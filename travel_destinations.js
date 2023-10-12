@@ -39,8 +39,7 @@ function transform(data) {
   //clear existing content 
   const container = document.querySelector(".destinations-container");
   container.innerHTML = "";
-  
-  const elements = data.map((x) => {
+  const elements = data?.map((x) => {
     console.log(x, "x");
       const clone = cloneTemplate();
       clone.querySelector(".destination-card").id = x._id;
@@ -50,7 +49,6 @@ function transform(data) {
       clone.querySelector(".arrival-date").innerText = dayjs(x.arrival_date).format('DD MMMM, YYYY');
       clone.querySelector(".leave-date").innerText = dayjs(x.departure_date).format('DD MMMM, YYYY');
       clone.querySelector(".destination_img").src = x.image;
-      clone.querySelector("#delete-button").style.display = 'block';
       clone.querySelector("#delete-button").addEventListener("click", deleteEntry)
            // Loop through each button and show/hide based on authentication status
 
@@ -104,8 +102,6 @@ container.addEventListener("click", (e) => {
 
     export default transform
   
-  window.addEventListener("load", transform)
-
 
 
   
