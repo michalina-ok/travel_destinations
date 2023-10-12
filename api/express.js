@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const { ObjectId } = require("mongodb");
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 var passport = require("passport");
@@ -37,11 +38,15 @@ app.use(passport.initialize());
 
 //allow request from different port origins
 const corsOptions = {
-  origin: [
+/*   origin: [
     'http://127.0.0.1:5501',
     'http://127.0.0.1:5501/login.html',
-    'http://127.0.0.1:5501/login'
-  ],
+    'http://127.0.0.1:5501/login',
+    'http://127.0.0.1:5501/form_update.html'
+
+  ] */
+  origin: '*'
+  ,
   //allow post requests
   methods: ["GET,POST,PUT,DELETE"],
    // Update this to match your frontend's origin
@@ -52,6 +57,8 @@ app.use(cors(corsOptions));
 const Destination = require('../schemas/destination.js');
 const User = require('../schemas/user.js');
 
+
+mongoose.connect('mongodb://127.0.0.1:27017/travel_destinations_ola').catch((error) => console.log(error));
 
 
 //Listen for GET requests
@@ -66,10 +73,10 @@ app.get("/destinations/:destinationId", (req, res) => {
       Destination.findById(destinationId)
         .then((destination) => res.status(200).json(destination))
         .catch((err) => res.status(500).json({ error: "Error Fetching Destinations:", err }))
-        .finally(() => {
+       /*  .finally(() => {
           console.log("MongoDB Connection Closed");
           mongoose.disconnect();
-        });
+        }); */
     })
     .catch((error) => console.log(error));
 });
@@ -91,6 +98,21 @@ app.get("/destinations/:destinationId", (req, res) => {
         .catch((error) => console.log(error));
     });
 
+
+    //Listen for PUT requests
+    app.put('/destinations/:destinationId', async (req, res) => {
+      console.log(req.params.destinationId, "put request id");
+      console.log(req.body);
+  
+      await Destination.updateOne({_id: new ObjectId(req.params.destinationId)}, req.body).then(result => {
+        console.log(result, "result");
+          if (result.modifiedCount === 1) {
+              res.status(200).json({message: 'Success'});
+          } else {
+              res.status(500).json({message: 'Error'})
+          }
+      })
+  })
 
 
 //Listen for POST requests

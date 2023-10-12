@@ -76,7 +76,9 @@ function transform(data) {
   const container = document.querySelector(".destinations-container");
 
 container.addEventListener("click", (e) => {
+  console.log(e.target, "e.target");
     if (e.target.classList.contains("update-button")) {
+        console.log("update button clicked");
         //get the parent destination card id 
         const cardId = e.target.parentElement.id;
 
