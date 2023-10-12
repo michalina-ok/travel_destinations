@@ -1,13 +1,13 @@
 import { base64ToImage } from "./utils/base64toImg.js";
 import deleteEntry from "./delete.js";
-// import checkLoginStatus from "./login.js"; 
+
 
 window.addEventListener("load", async () => {
 //check if token still valid
   const token = localStorage.getItem("token");
   const expirationTime = localStorage.getItem("expirationTime");
   //call function to check log in status
- /*  checkLoginStatus(); */
+showLoginInfo()
 
 
   if (token && expirationTime && new Date().getTime() < expirationTime) {
@@ -54,13 +54,6 @@ function transform(data) {
       clone.querySelector("#delete-button").addEventListener("click", deleteEntry)
            // Loop through each button and show/hide based on authentication status
 
-    /*        deleteButtons.forEach(button => {
-            const isLoggedIn = localStorage.getItem("isLoggedIn");
-            if (isLoggedIn === "true") {
-                console.log("logged in true")
-                clone.querySelector("#delete-button").style.display = "block" // Show the button for authenticated users
-            }
-        }); */
       if (x.link === "") {
         clone.querySelector(".google-maps").remove();
       } else {

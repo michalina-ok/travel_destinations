@@ -33,8 +33,8 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
           console.log(res, "login successful response");
           localStorage.setItem("token", res.token);
           localStorage.setItem("username", res.email);
-          // set token expiration time to 20 minutes
-          localStorage.setItem("expirationTime", new Date().getTime() + 20 * 60 * 1000);
+          // set token expiration time to 2 minutes
+          localStorage.setItem("expirationTime", new Date().getTime() + 2 * 60 * 1000);
           loginForm.reset();
           setTimeout( () => {
           window.location.href = "index.html?loggedIn";
@@ -54,17 +54,3 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
 });
 
 
-/* function checkLoginStatus() {
-  const token = localStorage.getItem("token");
-  const expirationTime = localStorage.getItem("expirationTime");
-  if (token && expirationTime && new Date().getTime() < expirationTime) {
-    // Token is still valid
-    console.log("Token is still valid");
-    document.querySelector("#log-in-btn").innerHTML = "Sign out";
-  } else {
-    // Token has expired or is not present
-    console.log("Token has expired or is not present");
-    localStorage.removeItem("token");
-  }
-}
-export default checkLoginStatus; */
