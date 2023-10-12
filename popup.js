@@ -42,7 +42,7 @@ function closePopup() {
     console.log("calling showPopup")
         popup.classList.add("show")
         setTimeout(() => {
-            popup.classList.remove("show");
+            popup.classList.add("fade-out");
           }, 3000);
   }
 
