@@ -1,3 +1,5 @@
+
+
 const apiEndPoint = "http://127.0.0.1:4000/destinations/";
 
 //PREFILL THE FORM WITH THE DATA FROM THE DATABASE
@@ -149,7 +151,7 @@ async function updateDestination(updatedDestination) {
         if (response.ok) {
             console.log("Data sent to the server");
             //Call function to show message
-            /* redirect(); */
+            redirect();
         } else {
             console.error("Error sending data to the server");
         }
@@ -160,6 +162,9 @@ async function updateDestination(updatedDestination) {
 }
 
 
-/* function redirect() {
-    window.location.href = "index.html";
-} */
+function redirect() {
+    alert("The destination was updated");
+        setTimeout(() => {
+        window.location.href = "index.html";
+        }, 300);
+}

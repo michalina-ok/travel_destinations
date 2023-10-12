@@ -7,7 +7,6 @@ window.addEventListener("load", async () => {
   const token = localStorage.getItem("token");
   const expirationTime = localStorage.getItem("expirationTime");
   //call function to check log in status
-showLoginInfo()
 
 
   if (token && expirationTime && new Date().getTime() < expirationTime) {
@@ -50,6 +49,11 @@ function transform(data) {
       clone.querySelector(".leave-date").innerText = dayjs(x.departure_date).format('DD MMMM, YYYY');
       clone.querySelector(".destination_img").src = x.image;
       clone.querySelector("#delete-button").addEventListener("click", deleteEntry)
+      if(localStorage.getItem("token")) {
+      clone.querySelector("#delete-button").style.display = "block";
+      } else {
+        clone.querySelector("#delete-button").style.display = "none";
+      }
            // Loop through each button and show/hide based on authentication status
 
       if (x.link === "") {

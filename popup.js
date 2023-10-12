@@ -46,21 +46,10 @@ function showLoginInfo() {
   const username = localStorage.getItem("username");
   const expirationTime = localStorage.getItem("expirationTime");
 
-  function showPopup() {
-    console.log("calling showPopup")
-        popup.classList.add("show")
-        setTimeout(() => {
-            popup.classList.add("fade-out");
-          }, 3000);
-  }
-
-
-    //IS SUPPOSED TO MAKE THE DELETE BUTTONS SHOW - DOESNT WORK
-    //const deleteButtons = document.querySelectorAll("#delete-button");
-    //deleteButtons.forEach(button => {
-    //button.classList.remove('hide');
-    //});
-
+  if (token && expirationTime && new Date().getTime() < expirationTime) {
+    // Token is still valid
+    login_button.classList.add("hide");
+    login_info.classList.add("show");
 
     displayedUser.innerHTML = `Logged in as ${username}`;
     console.log("Token is still valid");
