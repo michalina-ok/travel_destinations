@@ -192,18 +192,28 @@ padding: 10px;
 }
 
 .notification {
-  font-size: 20px;
-  padding: 6px 24px;
+  font-size: 18px;
+  padding: 6px;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
   gap: 20px;
-  background-color: #c2c2c2;
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--light-font-color);
   font-weight: 500;
   border: none;
   letter-spacing: -1.5px;
   margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 3.2px 3.2px 4px;
+}
+.notification img {
+  position: relative;
+  top: -15px;
+}
+
+.fade-out {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
 }
 
 #notification p {
