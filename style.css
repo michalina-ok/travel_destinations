@@ -259,3 +259,7 @@ form#login input, form#signup input {
 #login-info {
   color: var(--light-font-color);
 }
+
+#delete-button {
+  background-color: red;
+}

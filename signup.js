@@ -14,7 +14,7 @@ document.querySelector("#sign-up-btn").addEventListener("click", async (e) => {
           },
         });
    setTimeout( () => {
-    showPopUp()
+    showPopUp(document.querySelector("#notification_login p"),"You have successfully created an account")
    }, 3000)
     
         if (response.ok) {

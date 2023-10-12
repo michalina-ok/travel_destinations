@@ -1,10 +1,14 @@
 import { base64ToImage } from "./utils/base64toImg.js";
 import deleteEntry from "./delete.js";
 
-window.addEventListener("DOMContentLoaded", async () => {
+
+window.addEventListener("load", async () => {
 //check if token still valid
   const token = localStorage.getItem("token");
   const expirationTime = localStorage.getItem("expirationTime");
+  //call function to check log in status
+showLoginInfo()
+
 
   if (token && expirationTime && new Date().getTime() < expirationTime) {
     // Token is still valid
@@ -32,13 +36,10 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 function transform(data) {
-  console.log("transform called", data);
-
   //clear existing content 
   const container = document.querySelector(".destinations-container");
   container.innerHTML = "";
-  
-  const elements = data.map((x) => {
+  const elements = data?.map((x) => {
     console.log(x, "x");
       const clone = cloneTemplate();
       clone.querySelector(".destination-card").id = x._id;
@@ -48,17 +49,9 @@ function transform(data) {
       clone.querySelector(".arrival-date").innerText = dayjs(x.arrival_date).format('DD MMMM, YYYY');
       clone.querySelector(".leave-date").innerText = dayjs(x.departure_date).format('DD MMMM, YYYY');
       clone.querySelector(".destination_img").src = x.image;
-      clone.querySelector("#delete-button").style.display = 'block';
       clone.querySelector("#delete-button").addEventListener("click", deleteEntry)
            // Loop through each button and show/hide based on authentication status
 
-    /*        deleteButtons.forEach(button => {
-            const isLoggedIn = localStorage.getItem("isLoggedIn");
-            if (isLoggedIn === "true") {
-                console.log("logged in true")
-                clone.querySelector("#delete-button").style.display = "block" // Show the button for authenticated users
-            }
-        }); */
       if (x.link === "") {
         clone.querySelector(".google-maps").remove();
       } else {
@@ -83,7 +76,9 @@ function transform(data) {
   const container = document.querySelector(".destinations-container");
 
 container.addEventListener("click", (e) => {
+  console.log(e.target, "e.target");
     if (e.target.classList.contains("update-button")) {
+        console.log("update button clicked");
         //get the parent destination card id 
         const cardId = e.target.parentElement.id;
 
@@ -107,8 +102,6 @@ container.addEventListener("click", (e) => {
 
     export default transform
   
-  window.addEventListener("load", transform)
-
 
 
   
