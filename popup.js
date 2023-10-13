@@ -4,15 +4,17 @@ const login_info = document.getElementById("login-info");
 const displayedUser = document.getElementById("userName");
 const login_button = document.getElementById("log-in-btn");
 const popup_index = document.getElementById("notification_index");
-const popup_login = document.getElementById("notification_login");
+const popup_login = document.querySelector("#notification_login p");
 
 //notification "Your destination was added on index"
 window.addEventListener("load", () => {
   const params = new URLSearchParams(window.location.search);
   //console.log(params.ha("loggedIn"), "params");
   if (params.has("loggedIn")) {
-    console.log("params are = loggedIn");
     showLoginInfo();
+  }
+  if(params.has("signedUp")) {
+    showPopup(popup_login, "You have successfully created an account");
   }
   closePopup();
 });
@@ -45,11 +47,9 @@ function showLoginInfo() {
     login_info.classList.add("show");
 
     displayedUser.innerHTML = `Logged in as ${username}`;
-    console.log("Token is still valid");
     document.querySelector("#log-in-btn").classList.add("hide");
   } else {
     // Token has expired or is not present
-    console.log("Token has expired or is not present");
     localStorage.removeItem("token");
   }
 }
