@@ -10,10 +10,6 @@ const popup_login = document.getElementById("notification_login");
 window.addEventListener("load", () => {
   const params = new URLSearchParams(window.location.search);
   //console.log(params.ha("loggedIn"), "params");
-  if (params.has("showPopup") === "true" || params.has("signedUp")) {
-    console.log("params are = showPopup or signedUp");
-    showPopup(document.querySelector("#notification_index p"), "Your destination was added");
-  }
   if (params.has("loggedIn")) {
     console.log("params are = loggedIn");
     showLoginInfo();
@@ -29,9 +25,6 @@ function closePopup() {
   });
 }
 
-//check if pop-up on the index should be showed
-
-//check if pop-up on the log-in should be showed
 
 function showPopup(messageElement, message) {
   popup.classList.add("show");

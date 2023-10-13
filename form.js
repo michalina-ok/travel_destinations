@@ -66,7 +66,7 @@ const description = document.getElementById('description').value;
       // send the POST request
       await insertData(destinationData); 
 
-    redirect();
+
 
     return destinationData;
   }
@@ -104,6 +104,8 @@ const description = document.getElementById('description').value;
       if (response.ok) {
         const data =  await response.json();
         console.log(data); // Handle the response from the server if needed
+        redirect();
+        showPopup(document.querySelector("#notification_index p"), "Your destination was added");
       } else {
         console.error("Error sending data to the server.");
       }

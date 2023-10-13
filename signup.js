@@ -13,14 +13,13 @@ document.querySelector("#sign-up-btn").addEventListener("click", async (e) => {
             "Content-Type": "application/json",
           },
         });
-   setTimeout( () => {
-    showPopUp(document.querySelector("#notification_login p"),"You have successfully created an account")
-   }, 3000)
     
         if (response.ok) {
           const data =  await response.json();
-         //showPopup();
           window.location.href = "login.html?signedUp";
+          setTimeout( () => {
+            showPopUp(document.querySelector("#notification_login p"), "You have successfully created an account");
+           }, 3000);
           console.log(data); // Handle the response from the server if needed
         } else {
           console.error("Error sending data to the server.");
