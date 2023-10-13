@@ -40,8 +40,8 @@ a {
   color: var(--light-font-color);
   font-weight: 500;
   border: none;
-  letter-spacing: -1.5px;
   transition: all 0.3s ease;
+  flex-shrink: 0; 
 }
 .primary-button:hover {
   background-color: #039be5;
