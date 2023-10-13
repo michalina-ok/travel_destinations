@@ -36,9 +36,10 @@ document.querySelector("#log-in-btn").addEventListener("click", async (e) => {
           // set token expiration time to 2 minutes
           localStorage.setItem("expirationTime", new Date().getTime() + 2 * 60 * 1000);
           loginForm.reset();
+          showPopup(document.querySelector("#notification_login p"), "Successfully logged in");
           setTimeout( () => {
           window.location.href = "index.html?loggedIn";
-          }, 300)
+          }, 1000)
           showLoginInfo();
         }
       })

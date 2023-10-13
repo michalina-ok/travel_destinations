@@ -33,8 +33,13 @@ function showPopup(messageElement, message) {
   setTimeout(() => {
     popup.classList.remove("show");
   }, 3000);
-  messageElement.innerHTML = message;
+  if(messageElement) {
+    messageElement.innerHTML = message;
+  } else {
+    console.log("no message element");
+  }
 }
+
 
 function showLoginInfo() {
   const token = localStorage.getItem("token");
@@ -45,8 +50,8 @@ function showLoginInfo() {
     // Token is still valid
     login_button.classList.add("hide");
     login_info.classList.add("show");
-
-    displayedUser.innerHTML = `Logged in as ${username}`;
+    displayedUser.innerHTML = `${ username}`
+    displayedUser.classList.add("logged-in-user");
     document.querySelector("#log-in-btn").classList.add("hide");
   } else {
     // Token has expired or is not present
