@@ -4,17 +4,17 @@ const login_info = document.getElementById("login-info");
 const displayedUser = document.getElementById("userName");
 const login_button = document.getElementById("log-in-btn");
 const popup_index = document.getElementById("notification_index");
-const popup_login = document.getElementById("notification_login");
+const popup_login = document.querySelector("#notification_login p");
 
 //notification "Your destination was added on index"
 window.addEventListener("load", () => {
   const params = new URLSearchParams(window.location.search);
   //console.log(params.ha("loggedIn"), "params");
-  if (params.has("showPopup") === "true" || params.has("signedUp")) {
-    showPopup(document.querySelector("#notification_index p"), "Your destination was added");
-  }
   if (params.has("loggedIn")) {
     showLoginInfo();
+  }
+  if(params.has("signedUp")) {
+    showPopup(popup_login, "You have successfully created an account");
   }
   closePopup();
 });
@@ -28,7 +28,6 @@ function closePopup() {
 }
 
 
-//check if pop-up on the log-in should be showed
 function showPopup(messageElement, message) {
   popup.classList.add("show");
   setTimeout(() => {
@@ -51,7 +50,6 @@ function showLoginInfo() {
     // Token is still valid
     login_button.classList.add("hide");
     login_info.classList.add("show");
-
     displayedUser.innerHTML = `${ username}`
     displayedUser.classList.add("logged-in-user");
     document.querySelector("#log-in-btn").classList.add("hide");
