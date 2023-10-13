@@ -7,6 +7,7 @@ window.addEventListener("load", async () => {
   const token = localStorage.getItem("token");
   const expirationTime = localStorage.getItem("expirationTime");
   //call function to check log in status
+  showLoginInfo();
 
 
   if (token && expirationTime && new Date().getTime() < expirationTime) {

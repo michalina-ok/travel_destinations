@@ -263,3 +263,9 @@ form#login input, form#signup input {
 #delete-button {
   background-color: red;
 }
+
+.logged-in-user {
+  padding: 0rem 0.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
